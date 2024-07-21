@@ -38,7 +38,7 @@ func createEvent(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"message": "Event Created!", "event": event})
+	context.JSON(http.StatusCreated, gin.H{"message": "Event Created!", "event": event})
 }
 
 func getEvent(context *gin.Context) {
