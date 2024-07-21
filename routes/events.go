@@ -28,8 +28,9 @@ func createEvent(context *gin.Context) {
 		return
 	}
 
-	event.ID = 1
-	event.UserID = 1
+	// this userId comes from the jwt token once a user if authenticated
+	// We stored it in the auth middleware to the serveur *gin.Context (it is pointer, so available for everyone)
+	event.UserID = context.GetInt64("userId")
 
 	err = event.Save()
 	if err != nil {
